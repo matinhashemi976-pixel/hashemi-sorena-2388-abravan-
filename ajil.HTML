@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فروشگاه آجیل عید</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Vazirmatn', sans-serif;
+    }
+
+    body{
+        background: linear-gradient(135deg,#fff,#ffe5e5);
+        color:#b30000;
+    }
+
+    header{
+        background:#b30000;
+        color:white;
+        padding:20px;
+        text-align:center;
+        font-size:28px;
+        font-weight:bold;
+    }
+
+    nav{
+        display:flex;
+        justify-content:center;
+        gap:20px;
+        background:#fff;
+        padding:15px;
+        border-bottom:2px solid #b30000;
+    }
+
+    nav a{
+        color:#b30000;
+        text-decoration:none;
+        font-size:18px;
+        font-weight:bold;
+        cursor:pointer;
+    }
+
+    nav a:hover{
+        text-decoration:underline;
+    }
+
+    .hero{
+        text-align:center;
+        padding:90px 20px;
+    }
+
+    .hero h1{
+        font-size:40px;
+        margin-bottom:15px;
+    }
+
+    .hero p{
+        font-size:20px;
+    }
+
+    /* پنل پیام */
+    .overlay{
+        position:fixed;
+        top:0;
+        right:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.6);
+        display:none;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .box{
+        background:white;
+        border:3px solid #b30000;
+        padding:40px;
+        border-radius:15px;
+        text-align:center;
+        width:90%;
+        max-width:500px;
+        animation: pop 0.3s ease;
+    }
+
+    @keyframes pop{
+        from{transform:scale(0.7);opacity:0;}
+        to{transform:scale(1);opacity:1;}
+    }
+
+    .box h2{
+        font-size:28px;
+        margin-bottom:15px;
+    }
+
+    .box p{
+        font-size:18px;
+        line-height:1.7;
+        margin-bottom:20px;
+    }
+
+    .btn{
+        background:#b30000;
+        color:white;
+        border:none;
+        padding:10px 20px;
+        border-radius:10px;
+        cursor:pointer;
+        font-size:16px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<header>
+    فروشگاه آجیل عید 🎉
+</header>
+
+<nav>
+    <a onclick="openComingSoon()">آجیل عید</a>
+    <a>خانه</a>
+    <a>محصولات</a>
+    <a>تماس با ما</a>
+</nav>
+
+<div class="hero">
+    <h1>به فروشگاه خوش آمدید</h1>
+    <p>بهترین آجیل تازه مخصوص عید نوروز</p>
+</div>
+
+<!-- پیام در حال ساخت -->
+<div id="overlay" class="overlay">
+    <div class="box">
+        <h2>⏳ جشنواره آجیل عید</h2>
+        <p>
+            جشنواره آجیل عید در حال ساخت و آماده‌سازی می‌باشد.<br>
+            از صبر و شکیبایی شما صمیمانه سپاسگزاریم 🌹
+        </p>
+
+        <button class="btn" onclick="closeComingSoon()">باشه</button>
+    </div>
+</div>
+
+<script>
+function openComingSoon(){
+    document.getElementById("overlay").style.display="flex";
+}
+
+function closeComingSoon(){
+    document.getElementById("overlay").style.display="none";
+}
+</script>
+
+</body>
+</html>

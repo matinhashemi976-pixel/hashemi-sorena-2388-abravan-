@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.6">
+<title>ارتباط با ما | فروشگاه میر جلیل هاشمی</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Vazirmatn',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f5f6fa;
+color:#222;
+}
+
+/* صفحه تایید */
+#verifyPage{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+background:linear-gradient(135deg,#ffffff,#eef2f7);
+}
+
+.verify-box{
+width:100%;
+max-width:500px;
+background:#fff;
+padding:35px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+text-align:center;
+}
+
+.shop-title{
+font-size:30px;
+font-weight:900;
+color:#d60000;
+margin-bottom:20px;
+}
+
+.loader{
+width:90px;
+height:90px;
+margin:auto;
+border:8px solid #ececec;
+border-top:8px solid #d60000;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+.status{
+margin-top:20px;
+font-size:18px;
+font-weight:700;
+}
+
+.progress{
+width:100%;
+height:10px;
+background:#ececec;
+border-radius:20px;
+overflow:hidden;
+margin-top:20px;
+}
+
+.bar{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#d60000,#ff4d4d);
+}
+
+.captcha{
+display:none;
+margin-top:25px;
+padding:18px;
+border:2px solid #ddd;
+border-radius:15px;
+background:#fafafa;
+font-size:18px;
+}
+
+.captcha input{
+width:24px;
+height:24px;
+cursor:pointer;
+}
+
+/* سایت */
+#contactPage{
+display:none;
+}
+
+header{
+background:linear-gradient(135deg,#d60000,#ff3d3d);
+color:white;
+padding:30px 15px;
+text-align:center;
+}
+
+header h1{
+font-size:34px;
+font-weight:900;
+}
+
+header p{
+margin-top:10px;
+}
+
+.slider{
+max-width:1100px;
+margin:20px auto;
+padding:15px;
+}
+
+.slide{
+height:250px;
+background:#fff;
+border:3px dashed #d60000;
+border-radius:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+font-weight:700;
+color:#999;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:15px;
+}
+
+.card{
+background:#fff;
+padding:25px;
+border-radius:20px;
+margin-bottom:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.card h2{
+color:#d60000;
+margin-bottom:15px;
+}
+
+.card p,
+.card li{
+line-height:2;
+}
+
+.btns{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:15px;
+}
+
+.btn{
+flex:1;
+min-width:200px;
+padding:15px;
+text-decoration:none;
+text-align:center;
+color:white;
+font-weight:700;
+border-radius:12px;
+}
+
+.home{background:#2d3436;}
+.sale{background:#d60000;}
+.neshan{background:#00b894;}
+.google{background:#4285f4;}
+.rubika{background:#0066ff;}
+
+footer{
+background:#111;
+color:white;
+padding:40px 20px 90px;
+margin-top:30px;
+}
+
+footer h3{
+margin-bottom:15px;
+}
+
+footer p{
+line-height:2;
+}
+
+.copy{
+text-align:center;
+margin-top:20px;
+padding-top:20px;
+border-top:1px solid rgba(255,255,255,.15);
+}
+
+.bottom-nav{
+position:fixed;
+bottom:0;
+right:0;
+left:0;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:12px;
+box-shadow:0 -5px 20px rgba(0,0,0,.1);
+}
+
+.bottom-nav a{
+text-decoration:none;
+color:#333;
+font-weight:700;
+}
+</style>
+</head>
+
+<body>
+
+<div id="verifyPage">
+
+<div class="verify-box">
+
+<div class="shop-title">
+فروشگاه میر جلیل هاشمی
+</div>
+
+<div class="loader"></div>
+
+<div class="status" id="status">
+در حال بررسی اطلاعات شما...
+</div>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div class="captcha" id="captcha">
+<input type="checkbox" id="robot">
+<label for="robot"> من ربات نیستم </label>
+</div>
+
+</div>
+
+</div>
+
+<div id="contactPage">
+
+<header>
+<h1>فروشگاه میر جلیل هاشمی</h1>
+<p>ارتباط با ما و پشتیبانی مشتریان</p>
+</header>
+
+<div class="slider">
+<div class="slide">
+محل قرارگیری عکس اسلاید شما
+</div>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h2>درباره ما</h2>
+<p>
+فروشگاه میر جلیل هاشمی با هدف ارائه کالاهای باکیفیت، قیمت مناسب و جلب رضایت مشتریان فعالیت می‌کند.
+رضایت مشتریان مهم‌ترین سرمایه ماست و تمامی انتقادات، پیشنهادات و مشکلات فاکتور با دقت بررسی می‌شود.
+</p>
+</div>
+
+<div class="card">
+<h2>شماره تماس</h2>
+<p>04533238235</p>
+</div>
+
+<div class="card">
+<h2>موارد قابل پیگیری</h2>
+<ul>
+<li>اعتراض به فاکتور</li>
+<li>اشتباه در فاکتور</li>
+<li>پرسش قیمت کالاها</li>
+<li>ثبت انتقادات و پیشنهادات</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>ساعات کاری فروشگاه</h2>
+<p>
+شنبه تا پنجشنبه: 07:00 الی 20:30
+<br><br>
+جمعه: 08:00 الی 14:00
+</p>
+</div>
+
+<div class="card">
+<h2>آدرس فروشگاه</h2>
+<p>
+استان اردبیل، اردبیل، آیت الله کاشانی، بین دیده بان و پاسداران
+</p>
+
+<div class="btns">
+
+<a class="btn neshan"
+href="https://neshan.org/maps/places/27e13eb0a1803081d0a29da5543f186c#c38.245-48.307-15z-0p"
+target="_blank">
+موقعیت در نشان
+</a>
+
+<a class="btn google"
+href="https://www.google.com/maps/place/Matin+Hashemi+Store/@38.2454493,48.3019995,17z/"
+target="_blank">
+گوگل مپ
+</a>
+
+<a class="btn rubika"
+href="https://rubika.ir/hashemistorsorena"
+target="_blank">
+کانال روبیکا
+</a>
+
+</div>
+</div>
+
+<div class="btns">
+
+<a href="wel - Copy.HTML" class="btn home">
+🏠 بازگشت به خانه
+</a>
+
+<a href="shegeft angiz.HTML" class="btn sale">
+🔥 تخفیف‌ها
+</a>
+
+</div>
+
+</div>
+
+<footer>
+
+<h3>فروشگاه میر جلیل هاشمی</h3>
+
+<p>
+پاسخگویی به مشتریان، رسیدگی به اعتراضات، بررسی اشتباهات فاکتور و استعلام قیمت کالاها در ساعات کاری انجام می‌شود.
+</p>
+
+<p>
+آدرس: استان اردبیل، اردبیل، آیت الله کاشانی، بین دیده بان و پاسداران
+</p>
+
+<p>
+تلفن: 04533238235
+</p>
+
+<div class="copy">
+© تمامی حقوق برای فروشگاه میر جلیل هاشمی محفوظ است.
+</div>
+
+</footer>
+
+<div class="bottom-nav">
+<a href="wel - Copy.HTML">🏠 خانه</a>
+<a href="shegeft angiz.HTML">🔥 تخفیف‌ها</a>
+<a href="#">☎️ ارتباط با ما</a>
+<a href="https://neshan.org/maps/places/27e13eb0a1803081d0a29da5543f186c#c38.245-48.307-15z-0p">📍 موقعیت</a>
+</div>
+
+</div>
+
+<script>
+let bar=document.getElementById("bar");
+let status=document.getElementById("status");
+let width=0;
+
+let loading=setInterval(function(){
+width+=2;
+bar.style.width=width+"%";
+
+if(width>=100){
+clearInterval(loading);
+status.innerHTML="✓ اتصال امن برقرار شد";
+document.getElementById("captcha").style.display="block";
+}
+},60);
+
+document.getElementById("robot").addEventListener("change",function(){
+
+if(this.checked){
+
+status.innerHTML="در حال تایید دسترسی...";
+
+setTimeout(function(){
+
+document.getElementById("verifyPage").style.display="none";
+document.getElementById("contactPage").style.display="block";
+
+},3000);
+
+}
+
+});
+</script>
+
+</body>
+</html>

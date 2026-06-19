@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کپچا امنیتی</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+overflow:hidden;
+}
+
+.box{
+width:380px;
+background:rgba(30,41,59,0.95);
+padding:40px 30px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.45);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+}
+
+h2{
+color:#f8fafc;
+font-size:30px;
+margin-bottom:10px;
+}
+
+.desc{
+color:#cbd5e1;
+font-size:15px;
+margin-bottom:25px;
+line-height:1.8;
+}
+
+.canvas-box{
+background:white;
+padding:10px;
+border-radius:18px;
+margin-bottom:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+canvas{
+border-radius:12px;
+}
+
+.input-box{
+position:relative;
+margin-bottom:18px;
+}
+
+input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+font-size:16px;
+background:#0f172a;
+color:white;
+outline:none;
+transition:0.3s;
+border:1px solid transparent;
+}
+
+input:focus{
+border-color:#38bdf8;
+box-shadow:0 0 15px rgba(56,189,248,0.3);
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#f59e0b,#facc15);
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(245,158,11,0.35);
+}
+
+.refresh{
+margin-top:14px;
+background:#0f172a;
+color:white;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.refresh:hover{
+background:#111827;
+}
+
+#msg{
+margin-top:18px;
+font-size:15px;
+color:#f8fafc;
+min-height:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>🛡 تایید امنیتی</h2>
+
+<p class="desc">
+لطفاً کد داخل تصویر را وارد کنید
+</p>
+
+<div class="canvas-box">
+<canvas id="captcha" width="200" height="70"></canvas>
+</div>
+
+<div class="input-box">
+<input type="text" id="input" placeholder="کد کپچا">
+</div>
+
+<button onclick="checkCaptcha()">تایید و ورود</button>
+
+<button class="refresh" onclick="createCaptcha()">
+🔄 ساخت کپچای جدید
+</button>
+
+<p id="msg"></p>
+
+</div>
+
+<script>
+
+let code = "";
+
+function createCaptcha(){
+
+const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+code = "";
+
+for(let i=0;i<6;i++){
+code += chars[Math.floor(Math.random()*chars.length)];
+}
+
+const canvas = document.getElementById("captcha");
+const ctx = canvas.getContext("2d");
+
+ctx.clearRect(0,0,200,70);
+
+const gradient = ctx.createLinearGradient(0,0,200,70);
+gradient.addColorStop(0,"#f8fafc");
+gradient.addColorStop(1,"#e2e8f0");
+
+ctx.fillStyle = gradient;
+ctx.fillRect(0,0,200,70);
+
+for(let i=0;i<25;i++){
+
+ctx.strokeStyle = `rgba(${Math.random()*255},
+${Math.random()*255},
+${Math.random()*255},0.4)`;
+
+ctx.beginPath();
+
+ctx.moveTo(Math.random()*200,Math.random()*70);
+
+ctx.lineTo(Math.random()*200,Math.random()*70);
+
+ctx.stroke();
+}
+
+ctx.font = "bold 34px Arial";
+
+for(let i=0;i<code.length;i++){
+
+ctx.save();
+
+ctx.translate(18 + i*28,40);
+
+ctx.rotate((Math.random()-0.5)*0.6);
+
+ctx.fillStyle = "#111827";
+
+ctx.fillText(code[i],0,0);
+
+ctx.restore();
+}
+
+for(let i=0;i<100;i++){
+
+ctx.fillStyle = `rgba(${Math.random()*255},
+${Math.random()*255},
+${Math.random()*255},0.7)`;
+
+ctx.fillRect(Math.random()*200,
+Math.random()*70,2,2);
+}
+}
+
+createCaptcha();
+
+function checkCaptcha(){
+
+const input = document
+.getElementById("input")
+.value
+.trim()
+.toUpperCase();
+
+const msg = document.getElementById("msg");
+
+if(input === code.toUpperCase()){
+
+msg.innerHTML = "✅ کپچا صحیح است";
+
+setTimeout(()=>{
+window.location.href = "index.html";
+},1000);
+
+}else{
+
+msg.innerHTML = "❌ کپچا اشتباه است";
+
+createCaptcha();
+}
+}
+
+</script>
+
+</body>
+</html>

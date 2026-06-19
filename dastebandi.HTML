@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فروشگاه آنلاین | دسته‌بندی محصولات</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Vazirmatn,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+header{
+background:linear-gradient(135deg,#1e293b,#111827);
+padding:40px 20px;
+text-align:center;
+border-bottom:3px solid #f59e0b;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:10px;
+color:#facc15;
+}
+
+header p{
+color:#cbd5e1;
+font-size:18px;
+}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+padding:50px 30px;
+max-width:1300px;
+margin:auto;
+}
+
+.card{
+background:#1e293b;
+border-radius:25px;
+padding:35px 20px;
+text-align:center;
+transition:0.4s;
+position:relative;
+overflow:hidden;
+border:2px solid transparent;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+border-color:#f59e0b;
+box-shadow:0 15px 40px rgba(245,158,11,0.35);
+}
+
+.card::before{
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+background:rgba(245,158,11,0.08);
+border-radius:50%;
+top:-70px;
+left:-70px;
+}
+
+.icon{
+font-size:65px;
+margin-bottom:20px;
+}
+
+.card h2{
+font-size:28px;
+margin-bottom:12px;
+color:#facc15;
+}
+
+.card p{
+font-size:15px;
+line-height:1.9;
+color:#d1d5db;
+}
+
+.discount{
+background:linear-gradient(135deg,#dc2626,#ef4444);
+padding:60px 20px;
+margin:40px 20px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 10px 40px rgba(239,68,68,0.4);
+position:relative;
+overflow:hidden;
+}
+
+.discount h2{
+font-size:45px;
+margin-bottom:15px;
+}
+
+.discount p{
+font-size:20px;
+color:#fee2e2;
+}
+
+.badge{
+position:absolute;
+top:20px;
+left:20px;
+background:#facc15;
+color:black;
+padding:10px 18px;
+border-radius:50px;
+font-weight:bold;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+.coming-soon{
+max-width:1000px;
+margin:60px auto;
+background:#111827;
+padding:50px 25px;
+border-radius:30px;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.coming-soon::before{
+content:"COMING SOON";
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:90px;
+font-weight:bold;
+color:rgba(255,255,255,0.03);
+white-space:nowrap;
+}
+
+.coming-soon h2{
+font-size:42px;
+margin-bottom:20px;
+color:#38bdf8;
+position:relative;
+}
+
+.coming-soon p{
+font-size:18px;
+line-height:2;
+color:#cbd5e1;
+position:relative;
+}
+
+.loader{
+margin:35px auto 0;
+width:70px;
+height:70px;
+border:8px solid rgba(255,255,255,0.15);
+border-top:8px solid #38bdf8;
+border-radius:50%;
+animation:spin 1s linear infinite;
+position:relative;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+footer{
+margin-top:70px;
+padding:30px;
+text-align:center;
+background:#020617;
+color:#94a3b8;
+font-size:15px;
+}
+
+button{
+margin-top:25px;
+padding:14px 35px;
+background:#f59e0b;
+color:black;
+border:none;
+border-radius:15px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#facc15;
+transform:scale(1.05);
+}
+
+.slider{
+width:100%;
+padding:25px;
+overflow:hidden;
+}
+
+.slides{
+background:linear-gradient(135deg,#f59e0b,#dc2626);
+padding:30px;
+border-radius:25px;
+font-size:28px;
+font-weight:bold;
+text-align:center;
+position:relative;
+box-shadow:0 10px 35px rgba(0,0,0,0.4);
+}
+
+.slide{
+display:none;
+animation:fade 0.8s;
+}
+
+.slide.active{
+display:block;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(15px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.amazing-box{
+max-width:1200px;
+margin:40px auto;
+padding:30px;
+}
+
+.amazing-box h2{
+text-align:center;
+font-size:38px;
+margin-bottom:30px;
+color:#facc15;
+}
+
+.amazing-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.amazing-item{
+background:linear-gradient(135deg,#1d4ed8,#0f172a);
+padding:35px 20px;
+border-radius:25px;
+text-align:center;
+transition:0.4s;
+box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
+.amazing-item:hover{
+transform:translateY(-10px) scale(1.04);
+}
+
+.amazing-item span{
+font-size:60px;
+display:block;
+margin-bottom:15px;
+}
+
+.amazing-item h3{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.amazing-item p{
+color:#cbd5e1;
+font-size:16px;
+}
+
+
+.top-nav{
+width:100%;
+padding:18px 25px;
+background:#020617;
+position:sticky;
+top:0;
+z-index:999;
+border-bottom:2px solid #f59e0b;
+}
+
+.top-nav a{
+text-decoration:none;
+color:#facc15;
+font-size:18px;
+font-weight:bold;
+background:#111827;
+padding:12px 22px;
+border-radius:14px;
+display:inline-block;
+transition:0.3s;
+}
+
+.top-nav a:hover{
+background:#f59e0b;
+color:black;
+transform:scale(1.05);
+}
+
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+<a href="index.html">   صفحه اصلی</a>
+</nav>
+
+<header>
+<h1>فروشگاه بزرگ مواد غذایی</h1>
+<p>جدیدترین محصولات با بهترین کیفیت و قیمت</p>
+</header>
+
+<section class="slider">
+<div class="slides">
+<div class="slide active">🔥 فروش ویژه تنقلات با تخفیف‌های فوق‌العاده</div>
+<div class="slide">🍚 برنج ایرانی تازه با قیمت عالی</div>
+<div class="slide">🥜 آجیل لوکس مخصوص مهمانی و عید</div>
+<div class="slide">🫘 حبوبات درجه یک و کاملاً تازه</div>
+</div>
+</section>
+
+<section class="amazing-box">
+<h2>✨ شگفت‌انگیزهای امروز ✨</h2>
+<div class="amazing-grid">
+<div class="amazing-item">
+<span>🔥</span>
+<h3>چیپس ویژه</h3>
+<p>30٪ تخفیف محدود</p>
+</div>
+
+<div class="amazing-item">
+<span>🥜</span>
+<h3>پسته اکبری</h3>
+<p>قیمت استثنایی امروز</p>
+</div>
+
+<div class="amazing-item">
+<span>🍫</span>
+<h3>شکلات خارجی</h3>
+<p>ارسال سریع و ویژه</p>
+</div>
+</div>
+</section>
+
+<section class="categories">
+
+<div class="card">
+<div class="icon">🍚</div>
+<h2>برنج</h2>
+<p>
+انواع برنج ایرانی و خارجی با کیفیت عالی، عطر فوق‌العاده و قیمت مناسب.
+</p>
+<button>مشاهده محصولات</button>
+</div>
+
+<div class="card">
+<div class="icon">🫘</div>
+<h2>حبوبات</h2>
+<p>
+لوبیا، عدس، نخود و انواع حبوبات تازه و درجه یک برای آشپزی سالم.
+</p>
+<button>مشاهده محصولات</button>
+</div>
+
+<div class="card">
+<div class="icon">🥜</div>
+<h2>آجیل</h2>
+<p>
+آجیل تازه، خوشمزه و لوکس شامل پسته، بادام، فندق و گردو.
+</p>
+<button>مشاهده محصولات</button>
+</div>
+
+</section>
+
+<section class="discount">
+<div class="badge">🔥 تخفیف ویژه</div>
+<h2>تنقلات تخفیفی</h2>
+<p>
+چیپس، پفک، شکلات و انواع خوراکی با تخفیف‌های فوق‌العاده و محدود.
+</p>
+<button>خرید فوری</button>
+</section>
+
+<section class="coming-soon">
+<h2>به زودی...</h2>
+<p>
+سایت در حال ساخت می باشد از شکیبایی شما ممنون هستیم 
+</p>
+<div class="loader"></div>
+</section>
+
+<footer>
+تمام حقوق این سایت محفوظ است © 2026
+</footer>
+
+<script>
+const titles = [
+"🔥 تخفیف‌های جدید فعال شد",
+"🚀 فروش ویژه آخر هفته",
+"🥜 آجیل تازه رسید",
+"🍚 برنج ایرانی درجه یک"
+];
+
+let index = 0;
+
+setInterval(()=>{
+document.title = titles[index];
+index = (index + 1) % titles.length;
+},2000);
+
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
+
+setInterval(()=>{
+slides[currentSlide].classList.remove('active');
+currentSlide = (currentSlide + 1) % slides.length;
+slides[currentSlide].classList.add('active');
+},3000);
+</script>
+
+</body>
+</html>
+```
